@@ -41,6 +41,16 @@ namespace TicketManagement.Api.Controllers
             }
             return NoContent ();
         }
+        [HttpDelete ("{id}")]
+        public async Task<IActionResult> DeleteTicket(int id)
+        {
+            var result = await _ticketService.DeleteTicketAsync (id);
+            if (!result)
+            {
+                return NotFound ();
+            }
+            return NoContent ();
+        }
     }
 
 }
