@@ -1,11 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using TicketManagement.Api.Data;
+using TicketManagement.Api.Services;
+
 var builder = WebApplication.CreateBuilder (args);
 builder.Services.AddDbContext<AppDbContext> (options =>
     options.UseSqlite (
         builder.Configuration.GetConnectionString ("DefaultConnection")));
 
 // Add services to the container.
+builder.Services.AddScoped<TicketService> ();
 
 builder.Services.AddControllers ();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
