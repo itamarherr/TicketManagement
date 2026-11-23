@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TicketManagement.Api.DTOs;
 using TicketManagement.Api.enums;
-using TicketManagement.Api.Models;
 using TicketManagement.Api.Services;
 namespace TicketManagement.Api.Controllers
 {
@@ -24,7 +23,7 @@ namespace TicketManagement.Api.Controllers
             return Ok (tickets);
         }
         [HttpPost]
-        public async Task<ActionResult<Ticket>> CreateTicket([FromBody] CreateTicketDto dto)
+        public async Task<ActionResult<TicketDto>> CreateTicket([FromBody] CreateTicketDto dto)
         {
             var ticket = await _ticketService.CreateTicketAsync (dto);
             //return CreatedAtAction (nameof (GetTickets), new { id = ticket.Id }, ticket);

@@ -14,7 +14,7 @@ public class TicketService
     {
         _context = context;
     }
-    public async Task<List<Ticket>> GetTicketsAsync(
+    public async Task<List<TicketDto>> GetTicketsAsync(
     TicketStatus? status = null,
     TicketPriority? priority = null)
     {
@@ -27,9 +27,19 @@ public class TicketService
         {
             query = query.Where (t => t.Priority == priority.Value);
         }
-        return await query.ToListAsync ();
+        return await query.Select (ticket => new TicketDto
+        {
+            Id = ticket.Id,
+            Title = ticket.Title,
+            Description = ticket.Description,
+            Priority = ticket.Priority,
+            Status = ticket.Status,
+            CreatedAt = ticket.CreatedAt
+
+
+        }).ToListAsync ();
     }
-    public async Task<Ticket> CreateTicketAsync(CreateTicketDto dto)
+    public async Task<TicketDto> CreateTicketAsync(CreateTicketDto dto)
     {
         var ticket = new Ticket
         {
@@ -42,7 +52,15 @@ public class TicketService
         };
         _context.Tickets.Add (ticket);
         await _context.SaveChangesAsync ();
-        return ticket;
+        return new TicketDto
+        {
+            Id = ticket.Id,
+            Title = ticket.Title,
+            Description = ticket.Description,
+            Priority = ticket.Priority,
+            Status = ticket.Status,
+            CreatedAt = ticket.CreatedAt
+        };
     }
     public async Task<bool> UpdateTicketStatusAsync(int id, TicketStatus status)
     {

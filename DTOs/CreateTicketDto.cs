@@ -8,7 +8,10 @@ namespace TicketManagement.Api.DTOs
         [Required]
         [MaxLength (20)]
         public string Title { get; set; } = string.Empty;
+        [Required]
+        [MaxLength (200)]
         public string Description { get; set; } = string.Empty;
+
         public TicketPriority Priority { get; set; }
     }
 }
