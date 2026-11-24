@@ -26,7 +26,6 @@ namespace TicketManagement.Api.Controllers
         public async Task<ActionResult<TicketDto>> CreateTicket([FromBody] CreateTicketDto dto)
         {
             var ticket = await _ticketService.CreateTicketAsync (dto);
-            //return CreatedAtAction (nameof (GetTickets), new { id = ticket.Id }, ticket);
             return StatusCode (201, ticket);
         }
 
