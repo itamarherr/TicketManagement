@@ -27,11 +27,11 @@ A simple full-stack application for managing support tickets.
 
 - .NET 10 SDK
 - Node.js and npm (tested with Node.js 26.13.1)
-- Entity Framework Core CLI 10.0.0
+- Entity Framework Core CLI 10.0.15
 
 Install the Entity Framework Core CLI if needed:
 
-    dotnet tool install --global dotnet-ef --version 10.0.0
+    dotnet tool install --global dotnet-ef --version 10.0.15
 
 ### Backend Setup
 
