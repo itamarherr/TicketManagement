@@ -83,3 +83,46 @@ button:hover {
 .delete-button {
   background-color: #dc2626;
 }
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.ticket-header h3 {
+  margin: 0;
+}
+
+.ticket-priority {
+  background-color: #f3f4f6;
+  color: #4b5563;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.ticket-description {
+  color: #4b5563;
+  margin: 16px 0;
+  overflow-wrap: anywhere;
+}
+
+.ticket-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-top: 1px solid #eee;
+  padding-top: 12px;
+}
+
+.ticket-actions label {
+  color: #4b5563;
+  margin-right: 8px;
+}
+
+.ticket-actions select {
+  margin-right: 0;
+}

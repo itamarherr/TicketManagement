@@ -1,5 +1,5 @@
 import type { Ticket } from "../types/Ticket";
-import { TicketStatus, TicketStatusLabels } from "../types/TicketStatus";
+import { TicketStatus } from "../types/TicketStatus";
 import { TicketPriorityLabels } from "../types/TicketPriority";
 
 interface TicketItemProps {
@@ -10,24 +10,37 @@ interface TicketItemProps {
 
 function TicketItem({ ticket, onStatusChange, onDelete }: TicketItemProps) {
   return (
-    <li>
-      <h3>{ticket.title}</h3>
-      <p>{ticket.description}</p>
-      <p>{TicketPriorityLabels[ticket.priority]}</p>
-      <p>{TicketStatusLabels[ticket.status]}</p>
+    <li className="ticket-card">
+      <div className="ticket-header">
+        <h3>{ticket.title}</h3>
 
-      <select
-        value={ticket.status}
-        onChange={(e) =>
-          onStatusChange(ticket.id, Number(e.target.value) as TicketStatus)
-        }
-      >
-        <option value={TicketStatus.Open}>Open</option>
-        <option value={TicketStatus.InProgress}>In Progress</option>
-        <option value={TicketStatus.Closed}>Closed</option>
-      </select>
+        <span className="ticket-priority">
+          {TicketPriorityLabels[ticket.priority]} priority
+        </span>
+      </div>
 
-      <button onClick={() => onDelete(ticket.id)}>Delete</button>
+      <p className="ticket-description">{ticket.description}</p>
+
+      <div className="ticket-actions">
+        <div>
+          <label>Status: </label>
+
+          <select
+            value={ticket.status}
+            onChange={(e) =>
+              onStatusChange(ticket.id, Number(e.target.value) as TicketStatus)
+            }
+          >
+            <option value={TicketStatus.Open}>Open</option>
+            <option value={TicketStatus.InProgress}>In Progress</option>
+            <option value={TicketStatus.Closed}>Closed</option>
+          </select>
+        </div>
+
+        <button className="delete-button" onClick={() => onDelete(ticket.id)}>
+          Delete
+        </button>
+      </div>
     </li>
   );
 }

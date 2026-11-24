@@ -20,7 +20,7 @@ function TicketList({
   }
 
   return (
-    <ul>
+    <ul className="ticket-list">
       {tickets.map((ticket) => (
         <TicketItem
           key={ticket.id}

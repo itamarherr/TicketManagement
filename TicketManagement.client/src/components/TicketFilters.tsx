@@ -14,7 +14,7 @@ function TicketFilters({
   onSearchChange,
 }: TicketFiltersProps) {
   return (
-    <div>
+    <div className="ticket-filters">
       <select
         value={statusFilter}
         onChange={(e) =>
